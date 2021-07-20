@@ -12,7 +12,9 @@ protocol TodoProtocol {
     func deleteItem(todoItem: TodoItem)
 }
 protocol UpdateTableView: class {
-    func updateTableViewData(todoItem: TodoItem)
+    func onAdd(todoItem: TodoItem)
+    func onDelete(todoItem: TodoItem)
+    func onUpdate(todoItem: TodoItem)
 }
 class TodoViewModel: TodoProtocol {
     var database: TodoDB
@@ -21,19 +23,27 @@ class TodoViewModel: TodoProtocol {
         let added = database.add(usingTodoItem: todoItem)
         if added {
             DispatchQueue.main.async {
-                self.delegate?.updateTableViewData(todoItem: todoItem)
+                self.delegate?.onAdd(todoItem: todoItem)
             }
         }
     }
     
     func updateItem(todoItem: TodoItem) {
         database.update(usingTodoItem: todoItem)
+        DispatchQueue.main.async {
+            self.delegate?.onUpdate(todoItem: todoItem)
+        }
     }
     
     func deleteItem(todoItem: TodoItem) {
         database.delete(usingId: todoItem.id)
+        DispatchQueue.main.async {
+            self.delegate?.onDelete(todoItem: todoItem)
+        }
     }
-    
+    func changeState(todoItem: TodoItem) {
+        database.update(usingTodoItem: todoItem)
+    }
     
     init(database: TodoDB = FirestoreDatabase.shared) {
         self.database = database
