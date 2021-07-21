@@ -21,6 +21,8 @@
 		8A81EDA526A71B3F0092B878 /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A81EDA426A71B3F0092B878 /* TodoDB.swift */; };
 		8A81EDAD26A71BC70092B878 /* FirestoreDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A81EDAC26A71BC70092B878 /* FirestoreDatabase.swift */; };
 		8A81EDB226A7217F0092B878 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A81EDB126A7217F0092B878 /* TodoViewModel.swift */; };
+		8AF23E1E26A7F920004999F8 /* TodoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF23E1C26A7F920004999F8 /* TodoItemCell.swift */; };
+		8AF23E1F26A7F920004999F8 /* TodoItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF23E1D26A7F920004999F8 /* TodoItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		8A81EDA426A71B3F0092B878 /* TodoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDB.swift; sourceTree = "<group>"; };
 		8A81EDAC26A71BC70092B878 /* FirestoreDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDatabase.swift; sourceTree = "<group>"; };
 		8A81EDB126A7217F0092B878 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		8AF23E1C26A7F920004999F8 /* TodoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemCell.swift; sourceTree = "<group>"; };
+		8AF23E1D26A7F920004999F8 /* TodoItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoItemCell.xib; sourceTree = "<group>"; };
 		C55B15EB2A30BF700F054F24 /* Pods-iOSTodoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTodoApp.release.xcconfig"; path = "Target Support Files/Pods-iOSTodoApp/Pods-iOSTodoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +166,8 @@
 		8A81ED6F26A708DD0092B878 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8AF23E1C26A7F920004999F8 /* TodoItemCell.swift */,
+				8AF23E1D26A7F920004999F8 /* TodoItemCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				8A81ED9426A718BD0092B878 /* GoogleService-Info.plist in Resources */,
 				8A81ED4626A705F30092B878 /* Assets.xcassets in Resources */,
 				8A81ED4426A705F20092B878 /* Main.storyboard in Resources */,
+				8AF23E1F26A7F920004999F8 /* TodoItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +383,7 @@
 			files = (
 				8A81EDAD26A71BC70092B878 /* FirestoreDatabase.swift in Sources */,
 				8A81EDA526A71B3F0092B878 /* TodoDB.swift in Sources */,
+				8AF23E1E26A7F920004999F8 /* TodoItemCell.swift in Sources */,
 				8A81ED4126A705F20092B878 /* ViewController.swift in Sources */,
 				8A81ED3D26A705F20092B878 /* AppDelegate.swift in Sources */,
 				8A81ED9F26A71AC20092B878 /* TodoItem.swift in Sources */,

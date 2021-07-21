@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let nib = UINib(nibName: "TodoItemCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "todocell")
         todoViewModel = TodoViewModel()
         todoViewModel?.delegate = self
     }
@@ -77,7 +79,9 @@ extension ViewController: UITextFieldDelegate {
     
 }
 extension ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(60)
+    }
 }
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,13 +89,19 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todocell") else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "todocell", for: indexPath)  as? TodoItemCell else { return UITableViewCell() }
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: todoItems[indexPath.row].name)
         if todoItems[indexPath.row].isCompleted {
             attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedString.length))
-            cell.textLabel?.attributedText = attributedString
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.green, range: NSMakeRange(0, attributedString.length))
+            cell.todoLabel?.attributedText = attributedString
+            cell.imageView1.image = UIImage(systemName: "checkmark.circle.fill")
         } else {
-            cell.textLabel?.attributedText = attributedString
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: NSMakeRange(0, attributedString.length))
+            cell.todoLabel?.attributedText = attributedString
+            cell.imageView1.image = UIImage(systemName: "pencil.circle.fill")
+
+           // cell.textLabel?.attributedText = attributedString
         }
         return cell
     }
