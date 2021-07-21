@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         todoViewModel = TodoViewModel()
         todoViewModel?.delegate = self
     }
@@ -90,7 +89,6 @@ extension ViewController: UITableViewDataSource {
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: todoItems[indexPath.row].name)
         if todoItems[indexPath.row].isCompleted {
             attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedString.length))
-            //attributedString.addAttributes(NSAttributedString.Key.foregroundColor, value: .green , range: NSMakeRange(0, attributedString.length))
             cell.textLabel?.attributedText = attributedString
         } else {
             cell.textLabel?.attributedText = attributedString
@@ -132,17 +130,17 @@ extension ViewController: UITableViewDataSource {
     
 }
 extension ViewController: UpdateTableView {
+   
+    
     func onAdd(todoItem: TodoItem) {
-        todoItems.append(todoItem)
         self.addItemTextField.text = ""
-        tableView.reloadData()
     }
     func onDelete(todoItem: TodoItem) {
         var i = 0
         for item in todoItems {
             if item.name == todoItem.name {
                 break
-               
+
             }
             i = i + 1
         }
@@ -150,12 +148,16 @@ extension ViewController: UpdateTableView {
         tableView.reloadData()
     }
     func onUpdate(todoItem: TodoItem) {
-       let item =  todoItems.filter( {
-            $0.id == todoItem.id
-        })
-       // tableView.reloadData()
+        //       let item =  todoItems.filter( {
+        //            $0.id == todoItem.id
+        //        })
+        // tableView.reloadData()
     }
-    
+    func setup(todoItem: TodoItem) {
+        self.todoItems.append(todoItem)
+        tableView.reloadData()
+       
+    }
     
 }
 

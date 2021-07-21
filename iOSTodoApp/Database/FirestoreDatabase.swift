@@ -16,6 +16,25 @@ class FirestoreDatabase {
     private init() { }
 }
 extension FirestoreDatabase: TodoDB {
+    
+    
+    func subscribe(completion: @escaping (TodoItem) -> Void) {
+        firebaseDb.collection(todosCollection)
+            .addSnapshotListener { (snapshot, error) in
+                guard let collection = snapshot else { return }
+                collection.documentChanges.forEach { (change) in
+                    do {
+                        if change.type == .added, let item = try change.document.data(as: TodoItem.self) {
+                            completion(item)
+                        }
+                       
+                    } catch let error {
+                        print("error fetching \(error)")
+                    }
+                }
+            }
+    }
+    
     func add(usingTodoItem todoItem: TodoItem) -> Bool {
         do {
            let ref = try firebaseDb.collection(todosCollection)

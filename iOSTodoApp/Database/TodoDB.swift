@@ -10,5 +10,6 @@ protocol TodoDB {
     func add(usingTodoItem todoItem: TodoItem) -> Bool
     func update(usingTodoItem todoItem: TodoItem) -> Void
     func delete(usingId id: String) -> Void
+    func subscribe(completion: @escaping (TodoItem) -> Void) -> Void
     
 }
